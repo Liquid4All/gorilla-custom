@@ -51,6 +51,7 @@ class OpenAICompletionsHandler(BaseHandler):
             extra_body["repetition_penalty"] = kwargs.pop("repetition_penalty")
         if extra_body:
             kwargs["extra_body"] = extra_body
+        kwargs["timeout"] = 60
         api_response = self.client.chat.completions.create(**kwargs)
         end_time = time.time()
 
