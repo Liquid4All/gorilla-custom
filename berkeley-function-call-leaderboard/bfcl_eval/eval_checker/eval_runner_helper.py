@@ -667,9 +667,12 @@ def generate_leaderboard_csv(
             "max_length": 32768,
             "models": [model_snapshot],  # single model only
         }
-        with open(f"/home/maxime/autoeval/bfclv4.json", "w") as f:
+        import getpass
+        user = getpass.getuser()
+        output_path = f"/home/{user}/autoeval/bfclv4.json"
+        with open(output_path, "w") as f:
             json.dump(payload, f, indent=2, ensure_ascii=False)
-        print(f"✅ Exported results to /home/maxime/autoeval/bfclv4.json")
+        print(f"✅ Exported results to {output_path}")
 
     # -------------------- W&B logging (unchanged) --------------------
     wandb_project = os.getenv("WANDB_BFCL_PROJECT")
