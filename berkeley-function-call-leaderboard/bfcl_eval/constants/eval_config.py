@@ -18,9 +18,10 @@ PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 # environment variable.
 PROJECT_ROOT = Path(os.getenv("BFCL_PROJECT_ROOT", Path(__file__).resolve().parents[2]))
 
+MODEL_NAME = os.getenv("MODEL_NAME", None)
 
-RESULT_PATH = PROJECT_ROOT / "result"
-SCORE_PATH = PROJECT_ROOT / "score"
+RESULT_PATH = PROJECT_ROOT / "result" / MODEL_NAME if MODEL_NAME else PROJECT_ROOT / "result" / "generic"
+SCORE_PATH = PROJECT_ROOT / "score" / MODEL_NAME if MODEL_NAME else PROJECT_ROOT / "score" / "generic"
 DOTENV_PATH = PROJECT_ROOT / ".env"
 TEST_IDS_TO_GENERATE_PATH = PROJECT_ROOT / "test_case_ids_to_generate.json"
 
